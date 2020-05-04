@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import HttpStatus from 'http-status-codes'
 
 import { NextFunction, Request, Response } from 'express'
 import { getEvenToken } from './utils'
@@ -13,7 +12,7 @@ export const requireAuth = (req: Request, res: Response, next: NextFunction) => 
 
     next()
   } catch (error) {
-    return res.status(HttpStatus.UNAUTHORIZED).json({
+    return res.status(401).json({
       success: false,
       message: error.message
     })
