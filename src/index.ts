@@ -7,7 +7,7 @@ import { getEvenToken } from './utils'
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token: string = getEvenToken(req)
-    const claims = jwt.verify(token, <string>process.env.JWT_KEY)
+    const claims = jwt.verify(token, process.env.JWT_KEY as string)
 
     Object.assign(req, { user: claims })
 
