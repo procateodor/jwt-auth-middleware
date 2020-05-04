@@ -4,10 +4,14 @@ import * as HttpStatus from 'http-status-codes'
 import { NextFunction, Request, Response } from 'express'
 import { getEvenToken } from './utils'
 
-export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+export const requireAuth = (secret: string = process.env.JWT_KEY as string) => (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const token: string = getEvenToken(req)
-    const claims = jwt.verify(token, process.env.JWT_KEY as string)
+    const claims = jwt.verify(token, secret)
 
     Object.assign(req, { user: claims })
 
