@@ -1,0 +1,50 @@
+{
+  "name": "jwt-auth-middleware",
+  "version": "1.0.0",
+  "description": "Auth middleware using Bearer Token and jwt.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/procateodor/jwt-auth-middleware.git"
+  },
+  "keywords": [
+    "jwt",
+    "auth"
+  ],
+  "author": "Teodor Proca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/procateodor/jwt-auth-middleware/issues"
+  },
+  "homepage": "https://github.com/procateodor/jwt-auth-middleware#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.1",
+    "jest": "^25.5.4",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.4.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.3.9",
+    "http-status-codes": "^1.4.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
